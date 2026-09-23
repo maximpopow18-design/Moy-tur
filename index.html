@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Духовный детокс Полесья — тур выходного дня</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=MedievalSharp&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #c8a96e;
+  --gold-light: #e0c48a;
+  --ink: #2c2c2c;
+  --ink-light: #666;
+  --parchment: #f5e6c8;
+  --parchment-dark: #d4b896;
+  --brown: #5c3a1e;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: #f7f5f0;
+  color: var(--ink);
+  line-height: 1.6;
+}
+h1, h2, h3 { font-family: 'Cinzel', serif; }
+
+/* ХЕДЕР */
+header {
+  position: relative;
+  height: 90vh;
+  min-height: 500px;
+  background: url('https://sputnik.by/20250516/nebesnaya-zaschita-skromnoe-velichie-monastyrya-v-zhirovichakh-foto-1096390401.html#1') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.75));
+}
+.hero {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  padding: 20px;
+  max-width: 800px;
+}
+.hero h1 {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 16px;
+}
+.hero p {
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  opacity: 0.9;
+  margin-bottom: 28px;
+}
+.btn {
+  display: inline-block;
+  background: var(--gold);
+  color: #1a1a1a;
+  padding: 14px 40px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Cinzel', serif;
+}
+.btn:hover { background: var(--gold-light); }
+
+/* СЕКЦИИ */
+section { padding: 80px 20px; }
+.container { max-width: 1100px; margin: 0 auto; }
+.section-title {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  text-align: center;
+  margin-bottom: 12px;
+  color: #1a1a1a;
+}
+.section-sub {
+  text-align: center;
+  color: #777;
+  margin-bottom: 48px;
+  font-size: 1rem;
+}
+
+/* КАРТОЧКИ */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+}
+.card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  transition: transform 0.3s;
+}
+.card:hover { transform: translateY(-6px); }
+.card img { width: 100%; height: 200px; object-fit: cover; display: block; }
+.card-body { padding: 24px; }
+.card-body h3 { font-size: 1.15rem; margin-bottom: 8px; color: #1a1a1a; }
+.card-body p { font-size: 0.95rem; color: #666; }
+
+/* КАРТА — СРЕДНЕВЕКОВАЯ */
+.map-section {
+  background: #2a1f14;
+  padding: 80px 20px;
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(200,169,110,0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 30%, rgba(200,169,110,0.06) 0%, transparent 50%);
+}
+.map-section .section-title { color: var(--gold); }
+.map-section .section-sub { color: #a89878; }
+.map-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow:
+    0 30px 80px rgba(0,0,0,0.6),
+    inset 0 0 60px rgba(92,58,30,0.4);
+  border: 3px solid #3a2a18;
+}
+.map-wrapper svg { display: block; width: 100%; height: auto; }
+
+/* ПРОГРАММА */
+.timeline {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.day {
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px 32px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  position: relative;
+}
+.day::before {
+  content: attr(data-day);
+  position: absolute;
+  top: -14px;
+  left: 28px;
+  background: var(--gold);
+  color: #1a1a1a;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 6px 18px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Cinzel', serif;
+}
+.day h3 { margin-top: 8px; margin-bottom: 16px; font-size: 1.2rem; }
+.day ul { list-style: none; }
+.day li {
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 0.95rem;
+  color: #555;
+  display: flex;
+  gap: 10px;
+}
+.day li:last-child { border-bottom: none; }
+.day li span.time { font-weight: 700; color: var(--gold); min-width: 55px; }
+
+/* ГАЛЕРЕЯ */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+.gallery img {
+  width: 100%; height: 240px; object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+.gallery img:hover { transform: scale(1.03); box-shadow: 0 8px 30px rgba(0,0,0,0.15); }
+
+/* ЦЕНА */
+.price-box {
+  background: #1a1a1a;
+  color: #fff;
+  border-radius: 20px;
+  padding: 48px;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.price-box .amount {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+}
+.price-box .amount small { font-size: 1rem; font-weight: 400; color: #999; }
+.price-box ul { list-style: none; margin: 24px 0; text-align: left; }
+.price-box li { padding: 6px 0; font-size: 0.95rem; color: #ccc; }
+.price-box li::before { content: '✓ '; color: var(--gold); font-weight: 700; }
+
+/* ФОРМА БРОНИРОВАНИЯ */
+.form-section {
+  background: linear-gradient(180deg, #fff 0%, #f7f5f0 100%);
+  padding: 80px 20px;
+}
+.booking-form {
+  max-width: 680px;
+  margin: 0 auto;
+  background: #faf8f3;
+  border: 2px solid var(--gold);
+  border-radius: 20px;
+  padding: 48px 44px;
+  box-shadow: 0 15px 50px rgba(200,169,110,0.18);
+  position: relative;
+}
+.booking-form::before {
+  content: '✝';
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: #fff;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  box-shadow: 0 4px 14px rgba(200,169,110,0.4);
+}
+.form-row { margin-bottom: 22px; }
+.form-row label {
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--brown);
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.form-row input,
+.form-row select,
+.form-row textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid #d4c4a0;
+  border-radius: 10px;
+  background: #fff;
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--ink);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-row input:focus,
+.form-row select:focus,
+.form-row textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(200,169,110,0.2);
+}
+.form-row textarea { resize: vertical; min-height: 80px; }
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+.checkbox-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: var(--ink-light);
+  margin-bottom: 20px;
+}
+.checkbox-row input { width: auto; margin-top: 4px; accent-color: var(--gold); }
+.checkbox-row a { color: var(--gold); text-decoration: none; }
+.submit-btn {
+  width: 100%;
+  padding: 18px;
+  background: var(--gold);
+  color: #1a1a1a;
+  border: none;
+  border-radius: 50px;
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.submit-btn:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(200,169,110,0.45);
+}
+
+/* CTA */
+.cta { text-align: center; padding: 60px 20px; }
+
+/* ФУТЕР */
+footer {
+  background: #1a1a1a;
+  color: #777;
+  text-align: center;
+  padding: 32px 20px;
+  font-size: 0.85rem;
+}
+footer strong { color: var(--gold); }
+
+@media (max-width: 600px) {
+  section { padding: 50px 16px; }
+  .price-box { padding: 32px 20px; }
+  .booking-form { padding: 36px 22px; }
+  .form-grid { grid-template-columns: 1fr; gap: 0; }
+  .form-grid .form-row { margin-bottom: 22px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ХЕДЕР -->
+<header>
+  <div class="hero">
+    <h1>Духовный детокс Полесья</h1>
+    <p>2 дня без гаджетов. Монастыри, тишина, труд и вкус.</p>
+    <a href="#book" class="btn">Забронировать</a>
+  </div>
+</header>
+
+<!-- О ТУРЕ -->
+<section>
+  <div class="container">
+    <h2 class="section-title">Почему именно этот тур</h2>
+    <p class="section-sub">Не паломничество. Не экскурсия. Перезагрузка.</p>
+    <div class="features">
+      <div class="card">
+        <img src="https://sputnik.by/20250516/nebesnaya-zaschita-skromnoe-velichie-monastyrya-v-zhirovichakh-foto-1096390401.html#1" alt="Жировичский монастырь">
+        <div class="card-body">
+          <h3>Монастыринг</h3>
+          <p>Живёте при монастыре, помогаете по хозяйству, отказываетесь от телефона. Настоящий цифровой детокс.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://ru.belarus.travel/landmarks/treugolnaya-cerkov-v-derevne-bolshaya-svorotva" alt="Треугольная церковь">
+        <div class="card-body">
+          <h3>Единственная в стране</h3>
+          <p>Треугольная церковь Святой Троицы в Большой Своротве. Три входа — для трёх конфессий.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://www.psu.by/ru/component/content/article/uroki-dukhovnosti-dlya-budushchikh-pedagogov?Itemid=167&catid=28:sobytiya" alt="Постная трапеза">
+        <div class="card-body">
+          <h3>Монастырская кухня</h3>
+          <p>Постные драники, монастырский хлеб, травяной чай. Еда, которая запоминается.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- КАРТА МАРШРУТА (СРЕДНЕВЕКОВАЯ) -->
+<section class="map-section">
+  <div class="container">
+    <h2 class="section-title">Маршрут</h2>
+    <p class="section-sub">Пять сакральных точек Полесья</p>
+  </div>
+  <div class="map-wrapper">
+    <svg viewBox="0 0 1000 650" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <!-- Пергамент -->
+        <radialGradient id="parchment" cx="50%" cy="50%" r="75%">
+          <stop offset="0%" stop-color="#f5e6c8"/>
+          <stop offset="55%" stop-color="#e8d4a8"/>
+          <stop offset="100%" stop-color="#c9a86a"/>
+        </radialGradient>
+        <!-- Пятна на пергаменте -->
+        <radialGradient id="stain1" cx="30%" cy="30%" r="20%">
+          <stop offset="0%" stop-color="#a8895a" stop-opacity="0.25"/>
+          <stop offset="100%" stop-color="#a8895a" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="stain2" cx="75%" cy="70%" r="25%">
+          <stop offset="0%" stop-color="#8b6f3e" stop-opacity="0.22"/>
+          <stop offset="100%" stop-color="#8b6f3e" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="stain3" cx="55%" cy="20%" r="18%">
+          <stop offset="0%" stop-color="#a8895a" stop-opacity="0.18"/>
+          <stop offset="100%" stop-color="#a8895a" stop-opacity="0"/>
+        </radialGradient>
+        <!-- Текстура -->
+        <filter id="grain">
+          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7"/>
+          <feColorMatrix values="0 0 0 0 0.35  0 0 0 0 0.25  0 0 0 0 0.12  0 0 0 0.08 0"/>
+        </filter>
+        <filter id="ink">
+          <feGaussianBlur stdDeviation="0.5"/>
+        </filter>
+      </defs>
+
+      <!-- Фон — пергамент -->
+      <rect width="1000" height="650" fill="url(#parchment)"/>
+      <rect width="1000" height="650" fill="url(#stain1)"/>
+      <rect width="1000" height="650" fill="url(#stain2)"/>
+      <rect width="1000" height="650" fill="url(#stain3)"/>
+      <rect width="1000" height="650" filter="url(#grain)" opacity="0.5"/>
+
+      <!-- Орнаментальная рамка -->
+      <rect x="18" y="18" width="964" height="614" fill="none" stroke="#5c3a1e" stroke-width="3"/>
+      <rect x="28" y="28" width="944" height="594" fill="none" stroke="#5c3a1e" stroke-width="1" opacity="0.7"/>
+
+      <!-- Угловые завитки -->
+      <g stroke="#5c3a1e" stroke-width="2" fill="none" opacity="0.85">
+        <path d="M 40 80 Q 40 40 80 40"/>
+        <path d="M 40 80 Q 70 80 70 50"/>
+        <path d="M 960 80 Q 960 40 920 40"/>
+        <path d="M 960 80 Q 930 80 930 50"/>
+        <path d="M 40 570 Q 40 610 80 610"/>
+        <path d="M 40 570 Q 70 570 70 600"/>
+        <path d="M 960 570 Q 960 610 920 610"/>
+        <path d="M 960 570 Q 930 570 930 600"/>
+      </g>
+
+      <!-- Компас -->
+      <g transform="translate(140, 130)">
+        <circle r="55" fill="none" stroke="#5c3a1e" stroke-width="2"/>
+        <circle r="48" fill="none" stroke="#5c3a1e" stroke-width="0.8" opacity="0.7"/>
+        <circle r="42" fill="none" stroke="#5c3a1e" stroke-width="0.5" opacity="0.5"/>
+        <!-- Лучи компаса -->
+        <path d="M 0,-62 L 10,-16 L 62,0 L 10,16 L 0,62 L -10,16 L -62,0 L -10,-16 Z"
+              fill="#5c3a1e" opacity="0.9"/>
+        <path d="M 0,-62 L 10,-16 L 0,0 L -10,-16 Z" fill="#c8a96e"/>
+        <path d="M 0,62 L 10,16 L 0,0 L -10,16 Z" fill="#c8a96e"/>
+        <path d="M 62,0 L 16,10 L 0,0 L 16,-10 Z" fill="#c8a96e"/>
+        <path d="M -62,0 L -16,10 L 0,0 L -16,-10 Z" fill="#c8a96e"/>
+        <circle r="6" fill="#c8a96e" stroke="#5c3a1e" stroke-width="1.5"/>
+        <text y="-72" text-anchor="middle" font-family="MedievalSharp, serif" font-weight="700" font-size="20" fill="#5c3a1e">N</text>
+      </g>
+
+      <!-- Декоративный картуш -->
+      <g transform="translate(800, 90)">
+        <path d="M -70,0 L 70,0 L 80,-18 L -80,-18 Z" fill="#e8d4a8" stroke="#5c3a1e" stroke-width="1.5"/>
+        <path d="M -70,0 L 70,0 L 80,18 L -80,18 Z" fill="#e8d4a8" stroke="#5c3a1e" stroke-width="1.5"/>
+        <text y="6" text-anchor="middle" font-family="MedievalSharp, serif" font-weight="700" font-size="14" fill="#5c3a1e" letter-spacing="2">MARE POLESIA</text>
+      </g>
+
+      <!-- Маршрут — пунктир -->
+      <path d="M 820 160
+               C 700 180, 550 190, 400 260
+               C 350 310, 400 370, 480 390
+               C 530 405, 540 470, 570 500
+               C 650 530, 730 530, 790 500
+               C 870 460, 900 290, 820 160 Z"
+            fill="none" stroke="#5c3a1e" stroke-width="3"
+            stroke-dasharray="10 8" stroke-linecap="round" opacity="0.85"
+            filter="url(#ink)"/>
+
+      <!-- Точки маршрута -->
+      <!-- 1. Минск -->
+      <g transform="translate(820, 160)">
+        <circle r="26" fill="#f5e6c8" stroke="#5c3a1e" stroke-width="3"/>
+        <circle r="20" fill="none" stroke="#5c3a1e" stroke-width="1"/>
+        <text y="7" text-anchor="middle" font-family="Cinzel, serif" font-weight="700" font-size="20" fill="#5c3a1e">1</text>
+      </g>
+      <text x="820" y="210" text-anchor="middle" font-family="MedievalSharp, serif" font-weight="700" font-size="17" fill="#3a2410" letter-spacing="1">МИНСК</text>
+
+      <!-- 2. Жировичи -->
+      <g transform="translate(400, 260)">
+        <circle r="26" fill="#f5e6c8" stroke="#5c3a1e" stroke-width="3"/>
+        <circle r="20" fill="none" stroke="#5c3a1e" stroke-width="1"/>
+        <text y="7" text-anchor="middle" font-family="Cinzel, serif" font-weight="700" font-size="20" fill="#5c3a1e">2</text>
+      </g>
+      <text x="400" y="310" text-anchor="middle" font-family="MedievalSharp, serif" font-weight="700" font-size="16" fill="#3a2410" letter-spacing="1">ЖИРОВИЧИ</text>
+
+      <!-- 3. Лавришево -->
+      <g transform="translate(480, 390)">
+        <circle r="26" fill="#f5e6c8" stroke="#5c3a1e" stroke-width="3"/>
+        <circle r="20" fill="none" stroke="#5c3a1e" stroke-width="1"/>
+        <text y="7" text-anchor="middle" font-family="Cinzel, serif" font-weight="700" font-size="20" fill="#5c3a1e">3</text>
+      </g>
+      <text x="480" y="440" text-anchor="middle" font-family="MedievalSharp, serif" font-weight="700" font-size="16" fill="#3a2410" letter-spacing="1">ЛАВРИШЕВО</text>
+
+      <!-- 4. Своротва -->
+      <g transform="translate(570, 500)">
+        <circle r="26" fill="#f5e6c8" stroke="#5c3a1e" stroke-width="3"/>
+        <circle r="20" fill="none" stroke="#5c3a1e" stroke-width="1"/>
+        <text y="7" text-anchor="middle" font-family="Cinzel, serif" font-weight="700" font-size="20" fill="#5c3a1e">4</text>
+      </g>
+      <text x="570" y="550" text-anchor="middle" font-family="MedievalSharp, serif" font-weight="700" font-size="16" fill="#3a2410" letter-spacing="1">СВОРОТВА</text>
+
+      <!-- 5. Росица -->
+      <g transform="translate(790, 500)">
+        <circle r="26" fill="#f5e6c8" stroke="#5c3a1e" stroke-width="3"/>
+        <circle r="20" fill="none" stroke="#5c3a1e" stroke-width="1"/>
+        <text y="7" text-anchor="middle" font-family="Cinzel, serif" font-weight="700" font-size="20" fill="#5c3a1e">5</text>
+      </g>
+      <text x="790" y="550" text-anchor="middle" font-family="MedievalSharp, serif" font-weight="700" font-size="16" fill="#3a2410" letter-spacing="1">РОСИЦА</text>
+
+      <!-- Легенда -->
+      <g transform="translate(70, 530)">
+        <text font-family="MedievalSharp, serif" font-weight="700" font-size="14" fill="#5c3a1e" letter-spacing="1">ЛЕГЕНДА</text>
+        <line x1="0" y1="10" x2="160" y2="10" stroke="#5c3a1e" stroke-width="0.8" opacity="0.5"/>
+        <g transform="translate(0, 26)">
+          <line x1="0" y1="0" x2="30" y2="0" stroke="#5c3a1e" stroke-width="2.5" stroke-dasharray="5 4"/>
+          <text x="38" y="4" font-family="MedievalSharp, serif" font-size="12" fill="#3a2410">путь тура</text>
+        </g>
+        <g transform="translate(0, 48)">
+          <circle cx="15" cy="0" r="9" fill="#f5e6c8" stroke="#5c3a1e" stroke-width="2"/>
+          <text x="38" y="4" font-family="MedievalSharp, serif" font-size="12" fill="#3a2410">остановка</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ПРОГРАММА -->
+<section style="background:#fff;">
+  <div class="container">
+    <h2 class="section-title">Программа</h2>
+    <p class="section-sub">Два дня, которые вы почувствуете</p>
+    <div class="timeline">
+      <div class="day" data-day="День 1">
+        <h3>Погружение и тишина</h3>
+        <ul>
+          <li><span class="time">08:00</span> Трансфер из Минска (комфорт-минивэн)</li>
+          <li><span class="time">10:30</span> Жировичский монастырь — чудотворная икона, Эдемский сад</li>
+          <li><span class="time">13:00</span> Постный обед в монастырской трапезной</li>
+          <li><span class="time">15:00</span> Переезд в Брестскую область, размещение</li>
+          <li><span class="time">17:00</span> Монастыринг: труд, отказ от гаджетов, вечерняя служба</li>
+          <li><span class="time">20:00</span> Свободное время для чтения и тишины</li>
+        </ul>
+      </div>
+      <div class="day" data-day="День 2">
+        <h3>Архитектура и вкус</h3>
+        <ul>
+          <li><span class="time">07:30</span> Утренняя служба (по желанию)</li>
+          <li><span class="time">09:00</span> Свято-Елисеевский Лавришевский монастырь</li>
+          <li><span class="time">12:00</span> Гастро-стоп: белорусская кухня с монастырским хлебом</li>
+          <li><span class="time">14:00</span> Треугольная церковь Святой Троицы (Большая Своротва)</li>
+          <li><span class="time">16:00</span> Сарьянский костёл — «кристалл» среди полей</li>
+          <li><span class="time">19:00</span> Возвращение в Минск</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ГАЛЕРЕЯ -->
+<section>
+  <div class="container">
+    <h2 class="section-title">Что вы увидите</h2>
+    <p class="section-sub">Реальные фото мест маршрута</p>
+    <div class="gallery">
+      <img src="https://sputnik.by/20250516/nebesnaya-zaschita-skromnoe-velichie-monastyrya-v-zhirovichakh-foto-1096390401.html#1" alt="Жировичский монастырь">
+      <img src="https://photo-guest.belta.by/phot_gst.nsf/lkByThemeNumber?OpenView&start=11&count=10&text=&text=on&RestrictToCategory=257787&cal=off" alt="Лавришевский монастырь">
+      <img src="https://ru.belarus.travel/landmarks/treugolnaya-cerkov-v-derevne-bolshaya-svorotva" alt="Треугольная церковь">
+      <img src="https://commons.wikimedia.org/wiki/Category:Church_of_the_Holy_Trinity_in_Rosica?uselang=be" alt="Сарьянский костёл">
+      <img src="https://www.psu.by/ru/component/content/article/uroki-dukhovnosti-dlya-budushchikh-pedagogov?Itemid=167&catid=28:sobytiya" alt="Постная трапеза">
+      <img src="https://photobelta.by/ru/photo-ru/getRubric/81804/?curr_rubric_id=300" alt="Монастырский тур">
+    </div>
+  </div>
+</section>
+
+<!-- ЦЕНА -->
+<section style="background:#fff;">
+  <div class="container">
+    <h2 class="section-title">Стоимость</h2>
+    <p class="section-sub">Всё включено. Без скрытых доплат.</p>
+    <div class="price-box">
+      <div class="amount">180 BYN <small>/ чел.</small></div>
+      <ul>
+        <li>Трансфер Минск — Полесье — Минск</li>
+        <li>Проживание при монастыре (1 ночь)</li>
+        <li>3 приёма пищи (постное меню)</li>
+        <li>Экскурсионное сопровождение</li>
+        <li>Участие в «монастыринге»</li>
+        <li>Гарантированный цифровой детокс</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ФОРМА БРОНИРОВАНИЯ -->
+<section class="form-section" id="book">
+  <div class="container">
+    <h2 class="section-title">Забронировать место</h2>
+    <p class="section-sub">Группы до 12 человек. Подтверждение — в течение 2 часов.</p>
+
+    <form class="booking-form" onsubmit="event.preventDefault(); alert('Заявка отправлена! Мы свяжемся с вами в течение 2 часов.'); this.reset();">
+      <div class="form-grid">
+        <div class="form-row">
+          <label for="name">Имя и фамилия</label>
+          <input type="text" id="name" name="name" placeholder="Иван Иванов" required>
+        </div>
+        <div class="form-row">
+          <label for="phone">Телефон</label>
+          <input type="tel" id="phone" name="phone" placeholder="+375 (29) 000-00-00" required>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-row">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@mail.com" required>
+        </div>
+        <div class="form-row">
+          <label for="people">Количество человек</label>
+          <select id="people" name="people" required>
+            <option value="">Выберите…</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5 и более</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="date">Дата выезда</label>
+        <select id="date" name="date" required>
+          <option value="">Выберите дату…</option>
+          <option>Сб, 25 октября</option>
+          <option>Сб, 1 ноября</option>
+          <option>Сб, 8 ноября</option>
+          <option>Сб, 15 ноября</option>
+          <option>Другая дата (по согласованию)</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="notes">Пожелания (необязательно)</label>
+        <textarea id="notes" name="notes" placeholder="Пищевые ограничения, особенности здоровья, вопросы…"></textarea>
+      </div>
+
+      <label class="checkbox-row">
+        <input type="checkbox" required>
+        <span>Я согласен(на) на обработку персональных данных и с <a href="#">условиями бронирования</a>.</span>
+      </label>
+
+      <button type="submit" class="submit-btn">Забронировать</button>
+    </form>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <h2 class="section-title">Следующий выезд — каждую субботу</h2>
+  <p class="section-sub" style="margin-bottom:32px;">Осталось 3 места на ближайший тур</p>
+  <a href="tel:+375291234567" class="btn">+375 (29) 123-45-67</a>
+</div>
+
+<!-- ФУТЕР -->
+<footer>
+  <strong>Духовный детокс Полесья</strong> · БрГТУ · Кафедра мировой экономики, маркетинга и инвестиций<br>
+  Индивидуальное задание по дисциплине «Маркетинг в туризме»
+</footer>
+
+</body>
+</html>
